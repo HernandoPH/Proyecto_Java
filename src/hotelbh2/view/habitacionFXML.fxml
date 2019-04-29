@@ -5,9 +5,12 @@
 <?import com.jfoenix.controls.JFXTextArea?>
 <?import com.jfoenix.controls.JFXTextField?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.control.Button?>
+
 
 <AnchorPane id="habitacion" fx:id="habitacion" prefHeight="400.0" prefWidth="600.0" stylesheets="/hotelbh2/resources/session.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hotelbh2.controller.HabitacionFXMLController">
    <children>
+       <Button fx:id="menu" layoutX="31.0" layoutY="25.0" mnemonicParsing="false" onAction="#volverMenu" prefHeight="31.0" prefWidth="63.0" text="Menu" />
       <JFXTextField fx:id="num_hab" labelFloat="true" layoutX="79.0" layoutY="76.0" promptText="Numero Habitacion" />
       <JFXTextField fx:id="piso" labelFloat="true" layoutX="79.0" layoutY="137.0" promptText="Piso de la habitacion" />
       <JFXTextField fx:id="precio" labelFloat="true" layoutX="396.0" layoutY="82.0" promptText="Precio" />

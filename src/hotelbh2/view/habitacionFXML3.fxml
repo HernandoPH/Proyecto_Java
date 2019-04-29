@@ -13,7 +13,7 @@
       <JFXTextField fx:id="precio" labelFloat="true" layoutX="396.0" layoutY="82.0" promptText="Precio" />
       <JFXTextField fx:id="tipo_hab" labelFloat="true" layoutX="396.0" layoutY="200.0" promptText="Tipo" />
       <JFXTextArea fx:id="caracteristicas" labelFloat="true" layoutX="69.0" layoutY="195.0" prefHeight="61.0" prefWidth="155.0" promptText="Caracteristicas" />
-      <JFXButton fx:id="enviar_hab" buttonType="RAISED" layoutX="230.0" layoutY="346.0" onAction="#insertHab" text="Insertar habitacion" />
+      <JFXButton fx:id="enviar_hab" buttonType="RAISED" layoutX="230.0" layoutY="346.0" onAction="#modHab" text="Modificar habitacion" />
       <JFXComboBox fx:id="state" labelFloat="true" layoutX="260.0" layoutY="282.0" />
    </children>
 </AnchorPane>

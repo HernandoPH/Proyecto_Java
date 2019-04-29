@@ -33,7 +33,7 @@ import javafx.stage.Stage;
  *
  * @author Rusbelth
  */
-public class ServiceFXMLController implements Initializable 
+public class Service_modFXMLController implements Initializable 
 {
     @FXML AnchorPane add_service;
     @FXML AnchorPane mod_service;
@@ -58,29 +58,18 @@ public class ServiceFXMLController implements Initializable
     @Override
     public void initialize(URL url, ResourceBundle rb)
     {
-        
-        ids = FXCollections.observableArrayList();
-        Reserva.llenarInfo(ids);
-        select.setItems(ids);
+        Servicio ServicioClicked=ServiciosFXMLController.getServicioClicked();
+         nombre.setText(ServicioClicked.getNombre_servicio()); 
+         id_reserva.setText(ServicioClicked.getReserva().toString()); 
+         id_reserva.setEditable(false);
+          precio.setText(ServicioClicked.getPrecio().toString());
+       
     }    
-    @FXML
-    public void insertServ() throws SQLException{
-        
    
-        int num_precio=Integer.parseInt(precio.getText());
-        String id_reserva=select.getValue().toString();
-        int pos_puntos= id_reserva.indexOf(':');
-        int pos_coma= id_reserva.indexOf(',');
-        id_reserva=(id_reserva.substring((pos_puntos+2),pos_coma));
-        int id_reserva_int=Integer.parseInt(id_reserva);
-        Servicio servicio = new Servicio (nombre.getText(), num_precio,id_reserva_int);
-        servicio.insertServ();
-         
-    }
-    @FXML
     public void modServ() throws SQLException{
-        
-        int num_id=Integer.parseInt(id.getText());
+        Servicio ServicioClicked=ServiciosFXMLController.getServicioClicked();
+        int num_id=Servicio.ObtenerID(ServicioClicked.getNombre_servicio(),ServicioClicked.getReserva(),ServicioClicked.getPrecio());
+        //int num_id=Integer.parseInt(id.getText());
         int num_precio=Integer.parseInt(precio.getText());
         Servicio.modificarServ(nombre.getText(), num_precio,num_id);
 

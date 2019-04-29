@@ -8,6 +8,7 @@ package hotelbh2.controller;
 import hotelbh2.model.AddClient;
 import hotelbh2.model.Habitacion;
 import hotelbh2.model.Reserva;
+import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
@@ -18,7 +19,10 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -33,6 +37,8 @@ import javafx.stage.Stage;
 public class ListaReservaFXMLController implements Initializable {
     @FXML TableView<Reserva>tabla_reserva;
     private static Reserva factura_reserva;
+    @FXML AnchorPane lista_Reserva;
+    @FXML Button menu;
     @FXML TableColumn<Reserva,String> clmFechaIngreso;
     @FXML TableColumn<Reserva,String> clmFechaSalida;
     @FXML TableColumn<Reserva,Number> clmCantidadP;
@@ -76,6 +82,25 @@ public class ListaReservaFXMLController implements Initializable {
         return factura_reserva;
     }
     
-    
+       @FXML
+    public void volverMenu()
+    {
+       try
+        {
+            FXMLLoader loader = new FXMLLoader();
+            AnchorPane root = loader.load(getClass().getResource("/hotelbh2/view/menuFXML.fxml"));
+            Scene scene = new Scene(root);
+            Stage stage = new Stage();
+            stage.setScene(scene);
+            stage.setTitle("Menu Principal");
+            stage.initOwner(lista_Reserva.getScene().getWindow());
+            ((Stage)lista_Reserva.getScene().getWindow()).close();
+            stage.show();
+        }
+        catch (IOException ex) 
+        {
+            Logger.getLogger(LoginFXMLController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
      
 }

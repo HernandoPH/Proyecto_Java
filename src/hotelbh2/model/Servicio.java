@@ -4,6 +4,9 @@
  * and open the template in the editor.
  */
 package hotelbh2.model;
+import hotelbh2.controller.FacturaFXMLController;
+import hotelbh2.controller.LoginFXMLController;
+import java.io.IOException;
 import java.sql.SQLException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -15,6 +18,10 @@ import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import javafx.collections.ObservableList;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
+import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
 
 /**
  *
@@ -51,7 +58,7 @@ public class Servicio {
         
         public static void modificarServ(String nombre_servicio,int precio,int id) throws SQLException{
             conexion con = new conexion();            
-            con.consultaINSERT("UPDATE `Servicios` SET `nombre_servicio`='"+nombre_servicio+"',`precio`='"+precio+"'  WHERE  `id_servicio`='"+id+"'");
+            con.consultaINSERT("UPDATE `servicios` SET `nombre_servicio`='"+nombre_servicio+"',`precio`='"+precio+"'  WHERE  `id_servicio`='"+id+"'");
 
         }
         public static void lista(ObservableList lista)
@@ -113,7 +120,56 @@ public class Servicio {
     public void setReserva(int reserva) {
         this.reserva = new SimpleIntegerProperty(reserva);
     }
+         public void showHServiceDetails() {
+    
         
+        try
+        {
+           // ((Node) (window.getSource())).getScene().getWindow().hide();
+    
+            FXMLLoader loader = new FXMLLoader();
+            //  AnchorPane editClient=loader.setLocation(MainApp.class.getResource("/hotelbh2/view/mod_clienteFXML2.fxml"));      
+            AnchorPane editHab =loader.load(getClass().getResource("/hotelbh2/view/mod_serviceFXML2.fxml"));
+            Stage dialogStage_edit_hab = new Stage();
+            dialogStage_edit_hab.setTitle("Editar Servicio");
+            //dialogStage_edit_client.initModality(Modality.WINDOW_MODAL);
+            //dialogStage_edit_client.initOwner(ventana.getScene().getWindow());
+            Scene scene = new Scene(editHab);
+            dialogStage_edit_hab.setScene(scene);
+            dialogStage_edit_hab.show();
+           
+        }
+        catch (IOException ex) 
+        {
+            Logger.getLogger(LoginFXMLController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+     
+}
+         public static  int ObtenerID(String nombre ,int reserva_id,int precio){
+             conexion con=new conexion();
+       ResultSet rs;
+       int id=0;
+       String sql=("SELECT `id_servicio` FROM `servicios` WHERE `nombre_servicio`='"+nombre+"' AND `precio`="+precio+" AND `fk_id_reserva`="+reserva_id);
+
+
+        try {
+            rs=con.consulta(sql);
+            //String a =rs.getString("Nombre");
+            //System.out.println(a);
+            while(rs.next()){
+                 id=rs.getInt("id_servicio");
+
+            }
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(FacturaFXMLController.class.getName()).log(Level.SEVERE, null, ex);
+
+            
+
+        }
+        return id;
+         }
        
     
 }

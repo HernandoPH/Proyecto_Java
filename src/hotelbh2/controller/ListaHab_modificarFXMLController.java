@@ -45,7 +45,7 @@ public class ListaHab_modificarFXMLController implements Initializable {
         ObservableList<Habitacion> lista = FXCollections.observableArrayList();
         try 
         {
-            Habitacion.listaHab_reserva(lista);
+            Habitacion.listaHab(lista);
             tabla.setItems(lista);
             clmNumHab.setCellValueFactory(new PropertyValueFactory<Habitacion,Number>("num_hab"));
             clmCarac.setCellValueFactory(new PropertyValueFactory<Habitacion,String>("caracteristicas"));

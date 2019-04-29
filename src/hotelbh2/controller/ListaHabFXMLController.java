@@ -61,7 +61,6 @@ public class ListaHabFXMLController implements Initializable {
        @FXML
      void clickon(){
          
-        tabla.getSelectionModel().getSelectedItem().showHabDetails();
         Habitacion hab=tabla.getSelectionModel().getSelectedItem(); 
         habCLick = hab;
 

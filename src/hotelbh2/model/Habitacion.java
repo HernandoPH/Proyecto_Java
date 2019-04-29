@@ -62,6 +62,8 @@ public class Habitacion {
         
         public static void modificaHab(String caracteristicas,int precio,String estado,String tipo_hab,int num_hab) throws SQLException{
             conexion con = new conexion();            
+                    System.out.println("llego");
+
             con.consultaINSERT("UPDATE `Habitacion` SET `caracteristicas`='"+caracteristicas+"',`precio`='"+precio+"',`estado`='"+estado+"',`tipo_hab`='"+tipo_hab+"'  WHERE  `Numero_habitacion`='"+num_hab+"'");
 
         }

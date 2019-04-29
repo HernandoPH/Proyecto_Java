@@ -37,7 +37,26 @@ public class MenuFXMLController implements Initializable
         
     }    
     
-    
+      @FXML
+    public void calendario()
+    {
+        try
+        {
+            FXMLLoader loader = new FXMLLoader();
+            AnchorPane root = loader.load(getClass().getResourceAsStream("/hotelbh2/view/CalendarioFXML.fxml"));
+            Scene scene = new Scene(root);
+            Stage stage = new Stage();
+            stage.setTitle("Calendario");
+            stage.setScene(scene);
+            stage.initOwner(ventana.getScene().getWindow());
+            ((Stage)ventana.getScene().getWindow()).close();
+            stage.show();
+        }
+        catch (IOException ex) 
+        {
+            Logger.getLogger(LoginFXMLController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
     @FXML 
     public void recepcionista()
     {
@@ -193,7 +212,6 @@ public class MenuFXMLController implements Initializable
             Stage stage = new Stage();
             stage.setScene(scene);
             stage.setTitle("Modificar Habitacion");
-
             stage.initOwner(ventana.getScene().getWindow());
             ((Stage)ventana.getScene().getWindow()).close();
             stage.show();

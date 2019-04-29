@@ -5,7 +5,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/11.0.1" fx:controller="hotelbh2.controller.ListaHabFXMLController">
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/11.0.1" fx:controller="hotelbh2.controller.ListaHab_modificarFXMLController">
    <children>
       <TableView fx:id="tabla" layoutX="-1.0" prefHeight="400.0" prefWidth="606.0" onMousePressed="#clickon">
         <columns>

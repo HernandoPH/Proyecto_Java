@@ -62,11 +62,7 @@ public class ListaServFXMLController implements Initializable {
      void clickon(){
          
         tabla.getSelectionModel().getSelectedItem().showHabDetails();
-        
-        
-        
 
-        
 
     }
 }

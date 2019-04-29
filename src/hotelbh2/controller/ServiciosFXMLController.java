@@ -22,6 +22,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
  * @author Rusbelth
  */
 public class ServiciosFXMLController implements Initializable {
+    private static Servicio ServCLick;
     @FXML TableView<Servicio> tablaServicio;
     //@FXML TableColumn<Servicio, Number> id;
     @FXML TableColumn<Servicio, String> nombreS;
@@ -41,6 +42,17 @@ public class ServiciosFXMLController implements Initializable {
         nombreS.setCellValueFactory(new PropertyValueFactory<Servicio, String>("nombre_servicio"));
         precio.setCellValueFactory(new PropertyValueFactory<Servicio, Number>("precio"));
         idR.setCellValueFactory(new PropertyValueFactory<Servicio, Number>("reserva"));
+    }
+       @FXML
+     void clickon(){
+                 Servicio serv=tablaServicio.getSelectionModel().getSelectedItem(); 
+        ServCLick = serv;
+        tablaServicio.getSelectionModel().getSelectedItem().showHServiceDetails();
+
+
     }    
+    public static Servicio getServicioClicked(){
+        return ServCLick;
+    }
     
 }

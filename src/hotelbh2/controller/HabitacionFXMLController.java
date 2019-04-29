@@ -7,18 +7,24 @@ package hotelbh2.controller;
 
 import hotelbh2.model.AddClient;
 import hotelbh2.model.Habitacion;
+import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
 
 /**
  * FXML Controller class
@@ -47,6 +53,8 @@ public class HabitacionFXMLController implements Initializable
     public void initialize(URL url, ResourceBundle rb)
     {
          String[] datos=Habitacion.getdatos();
+                num_hab.setText(datos[6]);
+                //num_hab.setEditable(false);
                 caracteristicas.setText(datos[0]); 
                 precio.setText(datos[1]);
                 state.getSelectionModel().select(datos[2]);
@@ -69,7 +77,27 @@ public class HabitacionFXMLController implements Initializable
     }
         public void modHab() throws SQLException{
         String[] datos=Habitacion.getdatos();
-        int num_precio=Integer.parseInt(precio.getText());        
-        Habitacion.modificaHab(caracteristicas.getText(), num_precio, estado.getText(), tipo_hab.getText(), Integer.parseInt(datos[6]));
+        int num_precio=Integer.parseInt(precio.getText()); 
+        Habitacion.modificaHab(caracteristicas.getText(), num_precio, state.getValue(), tipo_hab.getText(), Integer.parseInt(datos[6]));
         }
+  @FXML
+    public void volverMenu()
+    {
+       try
+        {
+            FXMLLoader loader = new FXMLLoader();
+            AnchorPane root = loader.load(getClass().getResource("/hotelbh2/view/menuFXML.fxml"));
+            Scene scene = new Scene(root);
+            Stage stage = new Stage();
+            stage.setScene(scene);
+            stage.setTitle("Menu Principal");
+            stage.initOwner(habitacion.getScene().getWindow());
+            ((Stage)habitacion.getScene().getWindow()).close();
+            stage.show();
+        }
+        catch (IOException ex) 
+        {
+            Logger.getLogger(LoginFXMLController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }        
 }

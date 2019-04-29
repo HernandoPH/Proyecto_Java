@@ -6,7 +6,7 @@
 
 <AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hotelbh2.controller.ServiciosFXMLController">
    <children>
-      <TableView fx:id="tablaServicio" layoutY="-1.0" prefHeight="400.0" prefWidth="600.0">
+      <TableView fx:id="tablaServicio" layoutY="-1.0" prefHeight="400.0" prefWidth="600.0" onMousePressed="#clickon">
         <columns>
           <!--<TableColumn fx:id="id" prefWidth="84.0" text="ID" />-->
           <TableColumn fx:id="nombreS" prefWidth="259.0" text="Nombre Servicio" />

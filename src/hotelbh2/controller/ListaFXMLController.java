@@ -25,6 +25,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -41,6 +42,8 @@ import javafx.stage.Stage;
 public class ListaFXMLController implements Initializable
 {
     public static  AddClient ClientClick;
+    @FXML AnchorPane lista_client;
+    @FXML Button menu;
     @FXML TableView<AddClient> tablaCliente;
     @FXML TableColumn<AddClient,String> clmDoc;
     @FXML TableColumn<AddClient,String> clmNombre;
@@ -94,4 +97,24 @@ public class ListaFXMLController implements Initializable
      public static  AddClient gethabCLick(){
          return ClientClick;
      }     
+      @FXML
+    public void volverMenu()
+    {
+       try
+        {
+            FXMLLoader loader = new FXMLLoader();
+            AnchorPane root = loader.load(getClass().getResource("/hotelbh2/view/menuRecepcionistaFXML.fxml"));
+            Scene scene = new Scene(root);
+            Stage stage = new Stage();
+            stage.setScene(scene);
+            stage.setTitle("Menu Principal");
+            stage.initOwner(lista_client.getScene().getWindow());
+            ((Stage)lista_client.getScene().getWindow()).close();
+            stage.show();
+        }
+        catch (IOException ex) 
+        {
+            Logger.getLogger(LoginFXMLController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
 }
