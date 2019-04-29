@@ -9,6 +9,7 @@ import hotelbh2.controller.LoginFXMLController;
 import java.io.IOException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.beans.property.SimpleIntegerProperty;
@@ -75,7 +76,11 @@ public static void llenarInfo(ObservableList reservas)
     }      
      public void insertReserva() throws SQLException{
             conexion con = new conexion();
+                        SimpleDateFormat df = new SimpleDateFormat("YYYY/MM/dd");
+            java.util.Date fecha = new java.util.Date();
             con.consultaINSERT("INSERT INTO `Reserva`(`fecha_ingreso`, `fecha_salida`, `cantidad_personas`, `fk_User_empleado`, `fk_documento_cliente`, `fk_numero_hab`) VALUES ('"+this.fecha_ingreso.get()+"','"+this.fecha_salida.get()+"','"+this.cantidad_personas.get()+"','"+this.Trabajador.get()+"','"+this.documento_cliente.get()+"','"+this.num_hab.get()+"')");
+            Reporte report = new Reporte(df.format(fecha),"Reserva  añadida a la Habitacion numero  "+this.getNum_hab());
+            report.insert();
         }
 @FXML 
         public static void listaReserva(ObservableList<Reserva> lista) throws SQLException

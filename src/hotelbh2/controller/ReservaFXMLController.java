@@ -121,7 +121,7 @@ public class ReservaFXMLController implements Initializable  {
        try
         {
             FXMLLoader loader = new FXMLLoader();
-            AnchorPane root = loader.load(getClass().getResource("/hotelbh2/view/menuFXML.fxml"));
+            AnchorPane root = loader.load(getClass().getResource("/hotelbh2/view/menuRecepcionistaFXML.fxml"));
             Scene scene = new Scene(root);
             Stage stage = new Stage();
             stage.setScene(scene);

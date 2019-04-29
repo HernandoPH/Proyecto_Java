@@ -67,7 +67,7 @@ public class AddClient {
             SimpleDateFormat df = new SimpleDateFormat("YYYY/MM/dd");
             java.util.Date fecha = new java.util.Date();
             con.consultaINSERT("INSERT INTO `Cliente`(`Documentos`, `Nombre`, `Nacionalidad`, `Telefono`, `Email`, `Ocupacion`, `Estado_civil`, `fk_User_empleado`) VALUES ('"+this.Documentos.get()+"','"+this.Nombre.get()+"','"+this.Nacionalidad.get()+"','"+this.Telefono.get()+"','"+this.Email.get()+"','"+this.Ocupacion.get()+"','"+this.Estado_civil.get()+"','"+this.Trabajador+"')");
-            Reporte report = new Reporte(df.format(fecha),"Cliente añadido");
+            Reporte report = new Reporte(df.format(fecha),"Cliente añadido con documentos: "+this.Documentos.get()+" De nombre "+this.Nombre.get());
             report.insert();
         }
         

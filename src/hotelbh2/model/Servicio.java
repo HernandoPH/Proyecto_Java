@@ -45,7 +45,7 @@ public class Servicio {
             con.consultaINSERT("INSERT INTO `servicios`( `nombre_servicio`, `precio`, `fk_id_reserva`) VALUES ('"+this.nombre_servicio.get()+"','"+this.precio.get()+"','"+this.reserva.get()+"')");
             SimpleDateFormat df = new SimpleDateFormat("YYYY/MM/dd");
             java.util.Date fecha = new java.util.Date();
-            Reporte report = new Reporte(df.format(fecha),"Servicio añadido");
+            Reporte report = new Reporte(df.format(fecha),"Servicio de "+this.nombre_servicio.get()+" añadido a la reserva numero "+this.reserva.get());
             report.insert();
         }
         
