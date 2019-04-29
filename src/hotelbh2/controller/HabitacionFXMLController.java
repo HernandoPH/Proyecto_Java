@@ -10,9 +10,12 @@ import hotelbh2.model.Habitacion;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
@@ -30,15 +33,13 @@ public class HabitacionFXMLController implements Initializable
     @FXML TextField piso;
     @FXML TextField precio;
     @FXML TextField estado;
+    @FXML ComboBox<String> state;
     @FXML TextField tipo_hab;
     @FXML TextArea caracteristicas;
     @FXML Button enviar_hab;
     @FXML Button enviar_modhab;
+    private ObservableList<String> estados;
 
-
-
-    
-    
     /**
      * Initializes the controller class.
      */
@@ -48,28 +49,27 @@ public class HabitacionFXMLController implements Initializable
          String[] datos=Habitacion.getdatos();
                 caracteristicas.setText(datos[0]); 
                 precio.setText(datos[1]);
-                estado.setText(datos[2]);
+                state.getSelectionModel().select(datos[2]);
                 tipo_hab.setText(datos[3]);
                 piso.setText(datos[4]);
                 caracteristicas.setText(datos[5]);
+                estados = FXCollections.observableArrayList();
+                estados.add("Ocupado");
+                estados.add("Libre");
+                estados.add("Cerrado por mantenimiento");
+                state.setItems(estados);
     }    
     @FXML
     public void insertHab() throws SQLException{
-        
         int num_habitacion=Integer.parseInt(num_hab.getText());
         int num_precio=Integer.parseInt(precio.getText());
         int  num_piso=Integer.parseInt(piso.getText());        
-        Habitacion hab = new Habitacion (num_habitacion,caracteristicas.getText(),num_precio,estado.getText(),tipo_hab.getText(),num_piso);
-        hab.insertHab();
-         
+        Habitacion hab = new Habitacion (num_habitacion,caracteristicas.getText(),num_precio,state.getValue().toString(),tipo_hab.getText(),num_piso);
+        hab.insertHab(); 
     }
         public void modHab() throws SQLException{
         String[] datos=Habitacion.getdatos();
-        int num_precio=Integer.parseInt(precio.getText());
-        
+        int num_precio=Integer.parseInt(precio.getText());        
         Habitacion.modificaHab(caracteristicas.getText(), num_precio, estado.getText(), tipo_hab.getText(), Integer.parseInt(datos[6]));
-
-
         }
-
 }

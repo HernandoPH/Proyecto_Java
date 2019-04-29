@@ -57,12 +57,10 @@ public class ListaFXMLController implements Initializable
     @FXML AnchorPane ventana;
     @Override
     public void initialize(URL url, ResourceBundle rb)
-    {
-           
+    {  
         ObservableList<AddClient> lista = FXCollections.observableArrayList();
         try
         {
-           
             AddClient.listClient(lista);
             tablaCliente.setItems(lista);
             clmDoc.setCellValueFactory(new PropertyValueFactory<AddClient,String>("Documentos"));
@@ -78,33 +76,22 @@ public class ListaFXMLController implements Initializable
         {
             Logger.getLogger(ListaFXMLController.class.getName()).log(Level.SEVERE, null, ex);
         }
-    
-        
-        
     }
-    
     @FXML
      void clickon(){
          
         tablaCliente.getSelectionModel().getSelectedItem().showPersonDetails();
         AddClient client=tablaCliente.getSelectionModel().getSelectedItem(); 
         ClientClick=client;
-        
     }
-        @FXML
+    @FXML
     void clickon_reserva(){
-         
        AddClient client=tablaCliente.getSelectionModel().getSelectedItem(); 
         ClientClick=client;
         ReservaFXMLController.setClientR(client);
         System.out.println(client.getDocumentos());
-
-
     }
      public static  AddClient gethabCLick(){
          return ClientClick;
      }     
-   
-    
-
 }

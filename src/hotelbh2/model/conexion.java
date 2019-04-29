@@ -22,11 +22,13 @@ public class conexion
             Class.forName("com.mysql.jdbc.Driver");
            // con = DriverManager.getConnection("jdbc:mysql://192.168.12.167/hotalhb","Bryan","123");          
            con = DriverManager.getConnection("jdbc:mysql://localhost/hotalhb","root","");
+            System.out.println("Conectado");
             s = con.createStatement();
         }
         catch(Exception e)
         {
             e.printStackTrace();
+                        System.out.println("NO Conectado");
 
         }
     }

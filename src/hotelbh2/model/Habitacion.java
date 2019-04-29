@@ -10,6 +10,7 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.beans.property.IntegerProperty;
@@ -53,6 +54,10 @@ public class Habitacion {
         public void insertHab() throws SQLException{
             conexion con = new conexion();
             con.consultaINSERT("INSERT INTO `Habitacion`(`Numero_habitacion`, `caracteristicas`, `precio`, `estado`, `tipo_hab`, `piso`) VALUES ('"+this.num_hab.get()+"','"+this.caracteristicas.get()+"','"+this.precio.get()+"','"+this.estado.get()+"','"+this.tipo_hab.get()+"','"+this.piso.get()+"')");
+            SimpleDateFormat df = new SimpleDateFormat("YYYY/MM/dd");
+            java.util.Date fecha = new java.util.Date();
+            Reporte report = new Reporte(df.format(fecha),"Habitacion añadida");
+            report.insert();
         }
         
         public static void modificaHab(String caracteristicas,int precio,String estado,String tipo_hab,int num_hab) throws SQLException{
@@ -113,7 +118,7 @@ public class Habitacion {
            // ((Node) (window.getSource())).getScene().getWindow().hide();
             datos[0]=this.caracteristicas.get();
             datos[1]= this.precio.getValue().toString();
-            datos[2]=this.estado.get();
+            datos[2]=this.estado.getValue().toString();
             datos[3]=this.tipo_hab.get();
             datos[4]=this.piso.getValue().toString();
             datos[5]=this.caracteristicas.get();

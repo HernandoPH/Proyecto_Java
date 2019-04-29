@@ -42,8 +42,7 @@ public class ServiceFXMLController implements Initializable
     @FXML TextField precio;
     @FXML ComboBox<Reserva> select;
     @FXML Button enviar_add_service;
-        @FXML Button menu;
-
+    @FXML Button menu;
     @FXML Button enviar_modserv;
     private ObservableList<Reserva> ids; 
 
@@ -82,7 +81,7 @@ public class ServiceFXMLController implements Initializable
         Servicio.modificarServ(nombre.getText(), num_precio,num_id);
 
     }
- @FXML
+    @FXML
     public void volverMenu()
     {
        try
@@ -101,5 +100,5 @@ public class ServiceFXMLController implements Initializable
         {
             Logger.getLogger(LoginFXMLController.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }    
+    }   
 }

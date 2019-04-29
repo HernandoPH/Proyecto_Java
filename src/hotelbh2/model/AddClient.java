@@ -10,6 +10,9 @@ import hotelbh2.controller.LoginFXMLController;
 import java.io.IOException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Date;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.beans.property.IntegerProperty;
@@ -43,7 +46,8 @@ public class AddClient {
         private static String datos[]=new String[7];
 
         @FXML AnchorPane editClient;
-        @FXML AnchorPane ventana;@FXML TableView<AddClient> tablaCliente;
+        @FXML AnchorPane ventana;
+        @FXML TableView<AddClient> tablaCliente;
       
         @FXML Button enviar;
         
@@ -60,7 +64,11 @@ public class AddClient {
         }
         public void insertClient() throws SQLException{
             conexion con = new conexion();
+            SimpleDateFormat df = new SimpleDateFormat("YYYY/MM/dd");
+            java.util.Date fecha = new java.util.Date();
             con.consultaINSERT("INSERT INTO `Cliente`(`Documentos`, `Nombre`, `Nacionalidad`, `Telefono`, `Email`, `Ocupacion`, `Estado_civil`, `fk_User_empleado`) VALUES ('"+this.Documentos.get()+"','"+this.Nombre.get()+"','"+this.Nacionalidad.get()+"','"+this.Telefono.get()+"','"+this.Email.get()+"','"+this.Ocupacion.get()+"','"+this.Estado_civil.get()+"','"+this.Trabajador+"')");
+            Reporte report = new Reporte(df.format(fecha),"Cliente añadido");
+            report.insert();
         }
         
         public static void modificarClient(String documentos,String nombre,String nacionalidad,String telefono,String email,String ocupacion,String estado_civil) throws SQLException{

@@ -20,7 +20,6 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
-import javafx.stage.Stage;
 
 /**
  * FXML Controller class
@@ -63,14 +62,8 @@ public class ListaHabFXMLController implements Initializable {
      void clickon(){
          
         tabla.getSelectionModel().getSelectedItem().showHabDetails();
-
-    }
-    @FXML
-    void clickon_reserva(){
-         
         Habitacion hab=tabla.getSelectionModel().getSelectedItem(); 
         habCLick = hab;
-
 
     }
      public static  Habitacion gethabCLick(){

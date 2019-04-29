@@ -70,17 +70,29 @@ public class LoginFXMLController implements Initializable
             lblError.setVisible(true);
         }
     }
-    public void Login()
+    public void Login() throws SQLException
     {
+        boolean admin;
+        AnchorPane root;
+         Login login = new Login(inpName.getText().trim(),inpPass.getText().trim());
         try
         {
-           // ((Node) (window.getSource())).getScene().getWindow().hide();
+            admin = login.comprobarAdmin();
             FXMLLoader loader = new FXMLLoader();
-            AnchorPane root = loader.load(getClass().getResource("/hotelbh2/view/menuFXML.fxml"));
+            if(admin)
+            {
+                root = loader.load(getClass().getResource("/hotelbh2/view/menuFXML.fxml"));
+            }
+            else
+            {
+                root = loader.load(getClass().getResource("/hotelbh2/view/menuRecepcionistaFXML.fxml"));
+            }
+
             Scene scene = new Scene(root);
             Stage stage = new Stage();
             stage.setScene(scene);
-            stage.setTitle("Menu Principal");
+            
+
             stage.initOwner(window.getScene().getWindow());
             ((Stage)window.getScene().getWindow()).close();
             stage.show();

@@ -6,7 +6,10 @@
 package hotelbh2.controller;
 
 import java.io.IOException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.net.URL;
+import java.util.Date;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -35,9 +38,68 @@ public class MenuFXMLController implements Initializable
     }    
     
     
+    @FXML 
+    public void recepcionista()
+    {
+        try
+        {
+            FXMLLoader loader = new FXMLLoader();
+            AnchorPane root = loader.load(getClass().getResourceAsStream("/hotelbh2/view/recepcionistaFXML.fxml"));
+            Scene scene = new Scene(root);
+            Stage stage = new Stage();
+            stage.setScene(scene);
+            stage.setTitle("Insertar Recepcionista");
+            stage.initOwner(ventana.getScene().getWindow());
+            ((Stage)ventana.getScene().getWindow()).close();
+            stage.show();
+        }
+        catch (IOException ex) 
+        {
+            Logger.getLogger(LoginFXMLController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    @FXML 
+    public void reservas()
+    {
+        try
+        {
+            FXMLLoader loader = new FXMLLoader();
+            AnchorPane root = loader.load(getClass().getResourceAsStream("/hotelbh2/view/ListaReservaFXML.fxml"));
+            Scene scene = new Scene(root);
+            Stage stage = new Stage();
+            stage.setScene(scene);
+            stage.setTitle("Lista de Reservas");
+            stage.initOwner(ventana.getScene().getWindow());
+            ((Stage)ventana.getScene().getWindow()).close();
+            stage.show();
+        }
+        catch (IOException ex) 
+        {
+            Logger.getLogger(LoginFXMLController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
     
-    
-    
+    @FXML
+    public void servicios()
+    {
+        try
+        {
+            FXMLLoader loader = new FXMLLoader();
+            AnchorPane root = loader.load(getClass().getResourceAsStream("/hotelbh2/view/ServiciosFXML.fxml"));
+            Scene scene = new Scene(root);
+            Stage stage = new Stage();
+            stage.setScene(scene);
+            stage.setTitle("Lista de Servicios");
+            stage.initOwner(ventana.getScene().getWindow());
+            ((Stage)ventana.getScene().getWindow()).close();
+            stage.show();
+        }
+        catch (IOException ex) 
+        {
+            Logger.getLogger(LoginFXMLController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
     @FXML
     public void addClientes()
     {
@@ -171,6 +233,7 @@ public class MenuFXMLController implements Initializable
             Stage stage = new Stage();
             stage.setScene(scene);
             stage.setTitle("Modificar Servicio");
+
             stage.initOwner(ventana.getScene().getWindow());
             ((Stage)ventana.getScene().getWindow()).close();
             stage.show();
@@ -194,8 +257,7 @@ public class MenuFXMLController implements Initializable
         ((Stage)ventana.getScene().getWindow()).close();
         stage.show();
     }
-   
-     @FXML 
+    @FXML 
     public void listaHab()
     {
         FXMLLoader loader = new FXMLLoader();
@@ -217,26 +279,5 @@ public class MenuFXMLController implements Initializable
         }
         
         
-    }
-@FXML 
-    public void lista_reserva()
-    {
-        FXMLLoader loader = new FXMLLoader();
-        AnchorPane root;
-        try 
-        {
-            root = loader.load(getClass().getResourceAsStream("/hotelbh2/view/ListaReservaFXML.fxml"));
-            Scene scene = new Scene(root);
-            Stage stage = new Stage();
-            stage.setScene(scene);
-            stage.setTitle("Lista de  Reservas");
-            stage.initOwner(ventana.getScene().getWindow());
-            ((Stage)ventana.getScene().getWindow()).close();
-            stage.show();
-        } 
-        catch (IOException ex) 
-        {
-            Logger.getLogger(MenuFXMLController.class.getName()).log(Level.SEVERE, null, ex);
-        }
     }
 }
